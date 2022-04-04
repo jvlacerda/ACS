@@ -7,17 +7,20 @@ app = Flask(__name__)
 def calculate():
     resultado =""
     if request.method == "POST":
-        operador1 =float(request.form.get("op1"))
-        operador2 =float(request.form.get("op2"))
-        calculo = str(request.form.get("calc"))
-        if op =="soma":
-            resultado = round(n1+n2)
-        elif op =="subtracao":
-            resultado = round(n1-n2)
-        elif op == "divisao":
-            resultado =round(n1/n2)
-        elif op == "multiplicacao":
-            resultado = round(n1*n2)
+        op1 =float(request.form.get("op1"))
+        op2 =float(request.form.get("op2"))
+        calc = str(request.form.get("calc"))
+        if calc =="soma":
+            resultado = round(op1+op2)
+        elif calc =="subtracao":
+            resultado = round(op1-op2)
+        elif calc == "divisao":
+            resultado =round(op1/op2)
+        elif calc == "multiplicacao":
+            resultado = round(op1*op2)
     if resultado == 0 or resultado == NULL:
         resultado = str(0)
     return render_template("index.html",resultado = resultado)
+    
+if __name__ == '__main__':
+   app.run(debug=True, host='localhost', port=5000)
